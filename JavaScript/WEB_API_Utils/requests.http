@@ -1,0 +1,46 @@
+### 1. Requisição para manipulação de texto - Minúsculo
+# Esta requisição converte o texto enviado para minúsculo
+POST http://localhost:3000/text HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+input=Este%20é%20um%20Texto%20de%20Exemplo&action=lowercase
+
+# Esperado: "este é um texto de exemplo"
+
+
+### 2. Requisição para manipulação de texto - Maiúsculo
+# Esta requisição converte o texto enviado para maiúsculo
+POST http://localhost:3000/text HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+input=Este%20é%20um%20Texto%20de%20Exemplo&action=uppercase
+
+# Esperado: "ESTE É UM TEXTO DE EXEMPLO"
+
+
+### 3. Requisição para operação numérica - Mínimo
+# Esta requisição retorna o número mínimo da lista fornecida
+GET http://localhost:3000/number?action=minimum&input=5,10,3,1,7 HTTP/1.1
+
+# Esperado: "1"
+
+
+### 4. Requisição para operação numérica - Máximo
+# Esta requisição retorna o número máximo da lista fornecida
+GET http://localhost:3000/number?action=maximum&input=5,10,3,1,7 HTTP/1.1
+
+# Esperado: "10"
+
+
+### 5. Requisição para operação numérica - Entrada inválida (Texto)
+# Esta requisição simula um erro ao tentar enviar texto no lugar de números
+GET http://localhost:3000/number?action=minimum&input=abc,xyz,def HTTP/1.1
+
+# Esperado: "Entrada de números inválida"
+
+
+### 6. Requisição para operação numérica - Lista vazia
+# Esta requisição simula o envio de uma lista vazia
+GET http://localhost:3000/number?action=maximum&input= HTTP/1.1
+
+# Esperado: "Por favor, forneça números"
